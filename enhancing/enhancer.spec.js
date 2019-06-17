@@ -33,7 +33,7 @@ describe('enhancer', () => {
             it('should return the item with durability decreased by 5 if enhancement is under 15', () => {
                   expect(fail({ enhancement: 14, durability: 85 })).toEqual({ enhancement: 14, durability: 80 })
             })
-            it('should return the item with durabillity decreased by 10 if enhancement is over 15', () => {
+            it('should return the item with durability decreased by 10 if enhancement is over 15', () => {
                   expect(fail({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 16, durability: 65 })
             })
       });
@@ -41,6 +41,9 @@ describe('enhancer', () => {
       
 
       // describe('get()', () => {
+      //       it('should return unchanged item name if enhancement level is 0', => {
+      //             expect(get({ name: 'Stratego'})).
+      //       })
      
       // });
 })
