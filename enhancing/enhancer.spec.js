@@ -14,8 +14,8 @@ describe('enhancer', () => {
       // it.todo('should have a max durability value of 100');
 
       describe('fail()', () => {
-            it('should return the item with enhancement decrease by 1 if the enhancement is over 16', () => {
-                  expect(fail({ enhancement: 18 }).toEqual({ enhancement: 17 }))
+            it('should return the item with enhancement decrease by 1 and durability decresed by 10 if the enhancement is over 16', () => {
+                  expect(fail({ enhancement: 18, durability: 95 }).toEqual({ enhancement: 17, durability: 85 }))
             })
             it('should return the item with durability decreased by 5 if enhancement is under 15', () => {
                   expect(fail({ enhancement: 14, durability: 85 }).toEqual({ enhancement: 14, durability: 80 }))
