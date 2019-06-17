@@ -1,9 +1,13 @@
 module.exports = {
+  repair,
   succeed,
   fail,
-  repair,
   get,
 };
+
+function repair(item) {
+  return { ...item, durability: 100 };
+}
 
 function succeed(item) {
   const { enhancement } = item;
@@ -20,10 +24,31 @@ function succeed(item) {
 
 
 function fail(item) {
-  const { enhancement, durability } = item;
+  let { enhancement, durability } = item;
+
   if(enhancement > 16){
-    return { ...item, enhancement: enhancement-1};
+    return {
+      ...item,
+      enhancement: enhancement - 1,
+      durability: durability - 10
+    }
+  } else if (enhancement >= 15) {
+    return {
+      ...item,
+      durability: durability - 10
+    }
+  } else {
+    return {...item, durability: durability - 5}
   }
+  
+  // if(enhancement < 15){
+  //   return {...item, durability: durability -= 5}
+  // }else if (enhancement > 16){
+  //   return {...item, durability: durability -= 10, enhancement: enhancement -= 1}
+  // } else {
+  //       return {...item, durability: durability -= 10}
+  // }
+  
 }
 //fail 
 
@@ -31,9 +56,7 @@ function fail(item) {
 // If the item's enhancement is 15 or more, the durability of the item is decreased by 10.
 // If the item's enhancement level is greater than 16, the enhancement level decreases by 1 (17 goes down to 16, 18 goes down to 17).
 
-function repair(item) {
-  return { ...item, durability: 100 };
-}
+
 
 function get(item) {
   return { ...item };
