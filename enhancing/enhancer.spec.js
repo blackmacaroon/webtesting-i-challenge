@@ -13,28 +13,29 @@ describe('enhancer', () => {
       });
       // it.todo('should have a max durability value of 100');
 
-      describe('fail()', () => {
-            it('should return the item with enhancement decrease by 1 and durability decresed by 10 if the enhancement is over 16', () => {
-                  expect(fail({ enhancement: 18, durability: 95 }).toEqual({ enhancement: 17, durability: 85 }))
-            })
-            it('should return the item with durability decreased by 5 if enhancement is under 15', () => {
-                  expect(fail({ enhancement: 14, durability: 85 }).toEqual({ enhancement: 14, durability: 80 }))
-            })
-            it('should return the item with durabillity decreased by 10 if enhancement is over 15', () => {
-                  expect(fail({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 16, durability: 65 })
-            })
-      });
-
-      // describe('succeed()', () => {
-      //       it('should return the item with enhancement increased by 1', () => {
-      //             expect(succeed({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 17, durability: 75 })
+      // describe('fail()', () => {
+      //       it('should return the item with enhancement decrease by 1 and durability decresed by 10 if the enhancement is over 16', () => {
+      //             expect(fail({ enhancement: 18, durability: 95 }).toEqual({ enhancement: 17, durability: 85 }))
+      //       })
+      //       it('should return the item with durability decreased by 5 if enhancement is under 15', () => {
+      //             expect(fail({ enhancement: 14, durability: 85 }).toEqual({ enhancement: 14, durability: 80 }))
+      //       })
+      //       it('should return the item with durabillity decreased by 10 if enhancement is over 15', () => {
+      //             expect(fail({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 16, durability: 65 })
       //       })
       // });
 
+      describe('succeed()', () => {
+            it('should return the item with enhancement increased by 1', () => {
+                  expect(succeed({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 17, durability: 75 })
+            })
+            it('should return the item if the enhancement is already maxed at 20', () => {
+                  expect(succeed({ enhancement: 20, durability: 75 })).toEqual({ enhancement: 20, durability: 75 })
+            })
+      });
+
       // describe('get()', () => {
-      //       it('should return the item if the enhancement is already maxed at 20', () => {
-      //             expect(succeed({ enhancement: 20, durability: 75 })).toEqual({ enhancement: 20, durability: 75 })
-      //       })
+     
       // });
 })
 

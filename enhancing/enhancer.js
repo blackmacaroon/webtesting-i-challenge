@@ -7,8 +7,17 @@ module.exports = {
 
 function succeed(item) {
   const { enhancement } = item;
+  if(enhancement < 20){
+    return {enhancement + 1}
+  }
   return { ...item };
 }
+//success
+
+// The item's enhancement increases by 1.
+// If the item enhancement level is 20, the enhancement level is not changed.
+// The durability of the item is not changed.
+
 
 function fail(item) {
   const { enhancement, durability } = item;
