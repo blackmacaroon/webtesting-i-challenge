@@ -27,10 +27,11 @@ describe('enhancer', () => {
 
       describe('fail()', () => {
             it('should return the item with enhancement decreased by 1 and durability decresed by 10 if the enhancement is over 16', () => {
-                  expect(fail({ enhancement: 18, durability: 95 }).toEqual({ enhancement: 17, durability: 85 }))
+                  expect(fail({ enhancement: 18, durability: 95 })).toEqual({ enhancement: 17, durability: 85 })
+                  
             })
             it('should return the item with durability decreased by 5 if enhancement is under 15', () => {
-                  expect(fail({ enhancement: 14, durability: 85 }).toEqual({ enhancement: 14, durability: 80 }))
+                  expect(fail({ enhancement: 14, durability: 85 })).toEqual({ enhancement: 14, durability: 80 })
             })
             it('should return the item with durabillity decreased by 10 if enhancement is over 15', () => {
                   expect(fail({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 16, durability: 65 })
