@@ -4,31 +4,37 @@ const { succeed, fail, repair, get } = require('./enhancer.js');
 
 describe('enhancer', () => {
       describe('repair()', () => {
-            it('restores durability to 100', () => {
+            it('should restore durability to 100', () => {
                   expect(repair({ durability: 89 }).durability).toBe(100)
                   expect(repair({ durability: -89 }).durability).toBe(100)
                   expect(repair({ durability: 100 }).durability).toBe(100)
-                  expect(repair({ durability: 0 }).durability).toBe(100)
+                  expect(repair({ durability: 0 })).toEqual({ durability:100 })
             })
       });
-      it.todo('should have a max durability value of 100');
-
+      // it.todo('should have a max durability value of 100');
 
       describe('fail()', () => {
-            it('should ')
+            it('should return the item with enhancement decrease by 1 if the enhancement is over 16', () => {
+                  expect(fail({ enhancement: 18 }).toEqual({ enhancement: 17 }))
+            })
+            it('should return the item with durability decreased by 5 if enhancement is under 15', () => {
+                  expect(fail({ enhancement: 14, durability: 85 }).toEqual({ enhancement: 14, durability: 80 }))
+            })
+            it('should return the item with durabillity decreased by 10 if enhancement is over 15', () => {
+                  expect(fail({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 16, durability: 65 })
+            })
       });
 
       // describe('succeed()', () => {
-
+      //       it('should return the item with enhancement increased by 1', () => {
+      //             expect(succeed({ enhancement: 16, durability: 75 })).toEqual({ enhancement: 17, durability: 75 })
+      //       })
       // });
 
       // describe('get()', () => {
-
+      //       it('should return the item if the enhancement is already maxed at 20', () => {
+      //             expect(succeed({ enhancement: 20, durability: 75 })).toEqual({ enhancement: 20, durability: 75 })
+      //       })
       // });
 })
 
-//fail 
-
-// If the item's enhancement is less than 15, the durability of the item is decreased by 5.
-// If the item's enhancement is 15 or more, the durability of the item is decreased by 10.
-// If the item's enhancement level is greater than 16, the enhancement level decreases by 1 (17 goes down to 16, 18 goes down to 17).
